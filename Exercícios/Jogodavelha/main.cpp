@@ -64,8 +64,137 @@ int main()
         cout<<"\n";
         //IMPRESSÃO
 
+       	if ((velha[0]=='x' && velha[1]=='x' && velha[2]=='x')||
+		(velha[3]=='x' && velha[4]=='x' && velha[5]=='x')||
+		(velha[6]=='x' && velha[7]=='x' && velha[8]=='x')||
+		(velha[0]=='x' && velha[3]=='x' && velha[6]=='x')||
+		(velha[1]=='x' && velha[4]=='x' && velha[7]=='x')||
+		(velha[2]=='x' && velha[5]=='x' && velha[8]=='x')||
+		(velha[0]=='x' && velha[4]=='x' && velha[8]=='x')||
+		(velha[2]=='x' && velha[4]=='x' && velha[6]=='x'))
+        {
+            cout<<"Jogador 'x' ganhou.";
+            state=1;
+        }
 
-        //contax = 0;
+        if ((velha[0]=='o' && velha[1]=='o' && velha[2]=='o')||
+		(velha[3]=='o' && velha[4]=='o' && velha[5]=='o')||
+		(velha[6]=='o' && velha[7]=='o' && velha[8]=='o')||
+		(velha[0]=='o' && velha[3]=='o' && velha[6]=='o')||
+		(velha[1]=='o' && velha[4]=='o' && velha[7]=='o')||
+		(velha[2]=='o' && velha[5]=='o' && velha[8]=='o')||
+		(velha[0]=='o' && velha[4]=='o' && velha[8]=='o')||
+		(velha[2]=='o' && velha[4]=='o' && velha[6]=='o'))
+
+        {
+            cout<<"Jogador 'o' ganhou.";
+            state=1;
+        }
+
+    }
+    while (state==0); //FLAG PARA PERMANENCIA DO JOGO ENQUANTO NINGUEM GANHAR
+
+    return 0;
+}
+
+
+
+/*
+       if (velha[0]=='x' && velha[1]=='x' && velha[2]=='x')
+        {
+            cout<<"Jogador 'x' ganhou.";
+            state=1;
+        }
+        else if (velha[0]=='o' && velha[1]=='o' && velha[2]=='o')
+        {
+            cout<<"Jogador 'o' ganhou.";
+            state=1;
+        }
+        /////////////////////////////////////////////////////
+
+        else if (velha[3]=='x' && velha[4]=='x' && velha[5]=='x')
+        {
+            cout<<"Jogador 'x' ganhou.";
+            state=1;
+        }
+        else if (velha[3]=='o' && velha[4]=='o' && velha[5]=='o')
+        {
+            cout<<"Jogador 'o' ganhou.";
+            state=1;
+        }
+        /////////////////////////////////////////////////////
+
+        else if (velha[6]=='x' && velha[7]=='x' && velha[8]=='x')
+        {
+            cout<<"Jogador 'x' ganhou.";
+            state=1;
+        }
+        else if (velha[6]=='o' && velha[7]=='o' && velha[8]=='o')
+         {
+            cout<<"Jogador 'o' ganhou.";
+            state=1;
+        }
+        /////////////////////////////////////////////////////
+
+        else if (velha[0]=='x' && velha[3]=='x' && velha[6]=='x')
+        {
+            cout<<"Jogador 'x' ganhou.";
+            state=1;
+        }
+        else if (velha[0]=='o' && velha[3]=='o' && velha[6]=='o')
+        {
+            cout<<"Jogador 'o' ganhou.";
+            state=1;
+        }
+        /////////////////////////////////////////////////////
+
+        else if (velha[1]=='x' && velha[4]=='x' && velha[7]=='x')
+        {
+            cout<<"Jogador 'x' ganhou.";
+            state=1;
+        }
+        else if (velha[1]=='o' && velha[4]=='o' && velha[7]=='o')
+        {
+            cout<<"Jogador 'o' ganhou.";
+            state=1;
+        }
+        /////////////////////////////////////////////////////
+
+        else if (velha[2]=='x' && velha[5]=='x' && velha[8]=='x')
+        {
+            cout<<"Jogador 'x' ganhou.";
+            state=1;
+        }
+        else if (velha[2]=='o' && velha[5]=='o' && velha[8]=='o')
+        {
+            cout<<"Jogador 'o' ganhou.";
+            state=1;
+        }
+        /////////////////////////////////////////////////////
+
+        else if (velha[0]=='x' && velha[4]=='x' && velha[8]=='x')
+        {
+            cout<<"Jogador 'x' ganhou.";
+            state=1;
+        }
+        else if (velha[0]=='o' && velha[4]=='o' && velha[8]=='o')
+        {
+            cout<<"Jogador 'o' ganhou.";
+            state=1;
+        }
+        /////////////////////////////////////////////////////
+
+        else if (velha[2]=='x' && velha[4]=='x' && velha[6]=='x')
+        {
+            cout<<"Jogador 'x' ganhou.";
+            state=1;
+        }
+        else if (velha[2]=='o' && velha[4]=='o' && velha[6]=='o')
+        {
+            cout<<"Jogador 'o' ganhou.";
+            state=1;
+        }*/
+//contax = 0;
         //contao = 0;
 
        /* horizontal1x=0;
@@ -214,134 +343,3 @@ int main()
         }
 
 */
-
-       	if ((velha[0]=='x' && velha[1]=='x' && velha[2]=='x')||
-		(velha[3]=='x' && velha[4]=='x' && velha[5]=='x')||
-		(velha[6]=='x' && velha[7]=='x' && velha[8]=='x')||
-		(velha[0]=='x' && velha[3]=='x' && velha[6]=='x')||
-		(velha[1]=='x' && velha[4]=='x' && velha[7]=='x')||
-		(velha[2]=='x' && velha[5]=='x' && velha[8]=='x')||
-		(velha[0]=='x' && velha[4]=='x' && velha[8]=='x')||
-		(velha[2]=='x' && velha[4]=='x' && velha[6]=='x'))
-        {
-            cout<<"Jogador 'x' ganhou.";
-            state=1;
-        }
-
-
-
-        if ((velha[0]=='o' && velha[1]=='o' && velha[2]=='o')||
-		(velha[3]=='o' && velha[4]=='o' && velha[5]=='o')||
-		(velha[6]=='o' && velha[7]=='o' && velha[8]=='o')||
-		(velha[0]=='o' && velha[3]=='o' && velha[6]=='o')||
-		(velha[1]=='o' && velha[4]=='o' && velha[7]=='o')||
-		(velha[2]=='o' && velha[5]=='o' && velha[8]=='o')||
-		(velha[0]=='o' && velha[4]=='o' && velha[8]=='o')||
-		(velha[2]=='o' && velha[4]=='o' && velha[6]=='o'))
-
-        {
-            cout<<"Jogador 'o' ganhou.";
-            state=1;
-        }
-
-       /*
-       if (velha[0]=='x' && velha[1]=='x' && velha[2]=='x')
-        {
-            cout<<"Jogador 'x' ganhou.";
-            state=1;
-        }
-        else if (velha[0]=='o' && velha[1]=='o' && velha[2]=='o')
-        {
-            cout<<"Jogador 'o' ganhou.";
-            state=1;
-        }
-        /////////////////////////////////////////////////////
-
-        else if (velha[3]=='x' && velha[4]=='x' && velha[5]=='x')
-        {
-            cout<<"Jogador 'x' ganhou.";
-            state=1;
-        }
-        else if (velha[3]=='o' && velha[4]=='o' && velha[5]=='o')
-        {
-            cout<<"Jogador 'o' ganhou.";
-            state=1;
-        }
-        /////////////////////////////////////////////////////
-
-        else if (velha[6]=='x' && velha[7]=='x' && velha[8]=='x')
-        {
-            cout<<"Jogador 'x' ganhou.";
-            state=1;
-        }
-        else if (velha[6]=='o' && velha[7]=='o' && velha[8]=='o')
-         {
-            cout<<"Jogador 'o' ganhou.";
-            state=1;
-        }
-        /////////////////////////////////////////////////////
-
-        else if (velha[0]=='x' && velha[3]=='x' && velha[6]=='x')
-        {
-            cout<<"Jogador 'x' ganhou.";
-            state=1;
-        }
-        else if (velha[0]=='o' && velha[3]=='o' && velha[6]=='o')
-        {
-            cout<<"Jogador 'o' ganhou.";
-            state=1;
-        }
-        /////////////////////////////////////////////////////
-
-        else if (velha[1]=='x' && velha[4]=='x' && velha[7]=='x')
-        {
-            cout<<"Jogador 'x' ganhou.";
-            state=1;
-        }
-        else if (velha[1]=='o' && velha[4]=='o' && velha[7]=='o')
-        {
-            cout<<"Jogador 'o' ganhou.";
-            state=1;
-        }
-        /////////////////////////////////////////////////////
-
-        else if (velha[2]=='x' && velha[5]=='x' && velha[8]=='x')
-        {
-            cout<<"Jogador 'x' ganhou.";
-            state=1;
-        }
-        else if (velha[2]=='o' && velha[5]=='o' && velha[8]=='o')
-        {
-            cout<<"Jogador 'o' ganhou.";
-            state=1;
-        }
-        /////////////////////////////////////////////////////
-
-        else if (velha[0]=='x' && velha[4]=='x' && velha[8]=='x')
-        {
-            cout<<"Jogador 'x' ganhou.";
-            state=1;
-        }
-        else if (velha[0]=='o' && velha[4]=='o' && velha[8]=='o')
-        {
-            cout<<"Jogador 'o' ganhou.";
-            state=1;
-        }
-        /////////////////////////////////////////////////////
-
-        else if (velha[2]=='x' && velha[4]=='x' && velha[6]=='x')
-        {
-            cout<<"Jogador 'x' ganhou.";
-            state=1;
-        }
-        else if (velha[2]=='o' && velha[4]=='o' && velha[6]=='o')
-        {
-            cout<<"Jogador 'o' ganhou.";
-            state=1;
-        }*/
-
-    }
-    while (state==0); //FLAG PARA PERMANENCIA DO JOGO ENQUANTO NINGUEM GANHAR
-
-    return 0;
-}
