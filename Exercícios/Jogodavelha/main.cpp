@@ -5,20 +5,48 @@ using namespace std;
 
 int main()
 {
-    int x, y, i;
-    char velha[9], n;
+    int posi, i, j, k, l, state;
+    char velha[9], simb;
 
-
-    cout<<"Digite a posicao x e y";
-    cin>>x>>y;
+    /*cout<<"Digite a posicao: ";
+    cin>>posi;
     cout<<"Digite o simbolo 'x' ou 'o' ";
-    cin>>n;
+    cin>>simb;
+    //velha[3*x+y]= n;*/
 
-    velha[3*x+y]= n;
+    state = 0;
 
-    for(i=0; i<=9; i++)
+    for(i=0; i<9; i++)
     {
-        cout<<velha[i];
+        velha[i]='-';
     }
+
+
+    do
+    {
+        cout<<"Digite a posicao: ";
+        cin>>posi;
+        cout<<"Digite o simbolo 'x' ou 'o' ";
+        cin>>simb;
+        //velha[posi]= simb;
+        for(i=0; i<9; i++)
+        {
+            //velha[i]='-';
+            velha[posi]= simb;
+
+        }
+        for (i=0; i<3; i++)
+            cout<<velha[j];
+        cout<<"\n";
+        for (i=3; i<6; i++)
+            cout<<velha[k];
+        cout<<"\n";
+        for (i=6; i<9; i++)
+            cout<<velha[l];
+        cout<<"\n";
+
+    }
+    while (state==0);
+
     return 0;
 }
