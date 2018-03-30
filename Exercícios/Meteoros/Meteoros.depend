@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1522428914 source:/home/fernando/Documentos/GitHub/Linguagem_de_Programacao/Exercícios/Meteoros/main.cpp
+	<iostream>
+	<stdlib.h>
+	<cstdlib>
+
