@@ -6,35 +6,91 @@ using namespace std;
 
 int main()
 {
-    int i, j, pontos=10;
+    int i, j, l, k,  pontos=10;
     int px = 20, py=21;         //coordenadas x e y do player
-    int rd;                     //numero aleatorio
+    int rd, ran, ran2;                     //numero aleatorio
     int mx=1, my;               //coordenacas x e y do meteoro
     int bx=0, by=0;             //coordenadas x e y da bala
     char tela[22][41], tecla;   //matriz de coordenadas e tecla de movimento
+    int bullet[2][5];
 
     rd = rand()%40; //gerador de numero aleatorio entre 1 e 39
     my = rd;        //coordenada y do meteoro recebe numero aleatorio
 
+    for (i=0; i<2; i++)
+    {
+        for(j=0; j<5; j++)
+        {
+            bullet[i][j] = 0;
+        }
+    }
+
     do{
         system("clear");
         cout<<"pontos = "<<pontos;
-        if (mx>=21) //decrescimento e reinicialização da posição do meteoro caso o mesmo chegue ao chao
+
+        ran = rand()%(5)+1;
+        ran2 = rand()%(39)+1;
+
+
+        //IMPRESSAO MATRIZ BULLET
+        /*for (i=0; i<2; i++)
         {
-            pontos = pontos-5;
-            mx = 2; //inicio no topo da tela
-            rd = rand()%40;
-            my = rd;
+
+            for(j=0; j<5; j++)
+            {
+                cout<<bullet[i][j]<<" ";
+            }
+            cout<<"\n";
+        }
+        //IMPRESSAO MATRIZ BULLET
+        */
+
+        for (i=0; i<1; i++)
+        {
+            for(j=0; j<ran; j++)
+            {
+                if (bullet[0][j]==0)
+                {
+                    bullet[0][j]=1;
+                    bullet[1][j]=ran2;
+                    break;
+                }
+                if (bullet[1][j+1] == bullet[1][j])
+                {
+                    bullet[1][j+1] = bullet[1][j+1]+1;
+                }
+            }
+            cout<<"\n";
         }
 
-        if(bx<=1)   //desaparece com a bala caso a mesma atinja o topo da tela
+
+        //cout<<"\n"<<"Soma:"<<soma;
+
+
+        for (i=0; i<1; i++)
+        {
+            for(j=0; j<5; j++)
+            {
+                bullet[i][j] = bullet[i][j] + 1;
+                if (bullet[0][j]==9)
+                {
+                    bullet[0][j]=0;
+                    bullet[1][j]=0;
+                    pontos = pontos -5;
+                }
+            }
+        }
+
+
+        /*if(bx<=1)   //desaparece com a bala caso a mesma atinja o topo da tela
         {
             bx=0;
             by=0;
         }
 
-        mx = mx+1; //aumenta ou diminui a posição vertical da bala e do meteoro
         bx = bx-1;
+        */
 
         for(i=0; i<22; i++)
         {
@@ -45,7 +101,14 @@ int main()
                 else
                     tela[i][j] =' ';//preenche qualquer coisa q não seja a borda com espaços
 
-                tela[mx][my] = '*';//define a posição do meteoro em todas as interações
+                for (k=0; k<2; k++)
+                {
+                    for(l=0; l<5; l++)
+                    {
+                        tela[bullet[0][l]][bullet[1][l]] = '*';//define a posição do meteoro em todas as interações
+                    }
+                }
+
                 tela[bx][by] = '|';//define a posição da bala em todas as interações
                 tela[px][py]= '_';// define a posição do player em todas as interações
 
@@ -83,7 +146,7 @@ int main()
         //TECLAS DE MOVIMENTO DA BALA
 
         //CONDIÇÃO PARA REINICIALIZAÇÃO DA POSIÇÃO DA BALA E METEORO EM CASO DE COLISÃO
-        if (((bx>=mx-1) && (bx<=mx+1)) && (by==my))
+        /*if (((bx>=mx-1) && (bx<=mx+1)) && (by==my))
         {
             pontos = pontos + 3;
             mx = 2;
@@ -91,7 +154,7 @@ int main()
             my = rd;
             bx=0;
             by=0;
-        }
+        }*/
         //CONDIÇÃO PARA REINICIALIZAÇÃO DA POSIÇÃO DA BALA E METEORO EM CASO DE COLISÃO
 
     //cout<<mx<<" "<<my<<"\n";
