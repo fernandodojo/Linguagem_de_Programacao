@@ -93,14 +93,9 @@ int main()
             by=0;
         }
         //CONDIÇÃO PARA REINICIALIZAÇÃO DA POSIÇÃO DA BALA E METEORO EM CASO DE COLISÃO
-
-    //cout<<mx<<" "<<my<<"\n";
-    //cout<<bx<<" "<<by<<"\n";
     }
     while(pontos>0);
 
     if(pontos<=0)
         cout<<"Game Over";
-
 }
-
