@@ -44,7 +44,7 @@ int main()
 
         for (i=0; i<1; i++)
         {
-            for(j=0; j<ran; j++)
+            for(j=0; j<ran; j++)//usa-se a variavel ran, para limitar a geração de um novo meteoro ////melhorar////
             {
                 if (meteor[0][j]==0)//se a matriz de meteoro estiver com 0 esta automaticamente iniciara a coordenada y com 1 e coordenada x aleatoria
                 {
