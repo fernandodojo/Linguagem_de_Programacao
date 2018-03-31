@@ -101,6 +101,5 @@ int main()
 
     if(pontos<=0)
         cout<<"Game Over";
-
 }
 
