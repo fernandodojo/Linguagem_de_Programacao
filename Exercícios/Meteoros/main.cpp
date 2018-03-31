@@ -8,20 +8,16 @@ int main()
 {
     int i, j, l, k,  pontos=50;
     int px = 20, py=11;         //coordenadas x e y do player
-    int rd, ran, ran2;                     //numero aleatorio
-    //int mx=1, my;               //coordenacas x e y do meteoro
+    int ran, ran2;                     //numero aleatorio
     int bx=0, by=0;             //coordenadas x e y da bala
     char tela[22][22], tecla;   //matriz de coordenadas e tecla de movimento
-    int bullet[2][3];
-
-    //rd = rand()%40; //gerador de numero aleatorio entre 1 e 39
-    //my = rd;        //coordenada y do meteoro recebe numero aleatorio
+    int meteor[2][3];
 
     for (i=0; i<2; i++)
     {
         for(j=0; j<5; j++)
         {
-            bullet[i][j] = 0;
+            meteor[i][j] = 0;
         }
     }
 
@@ -33,67 +29,61 @@ int main()
         ran2 = rand()%(20)+2;
 
 
-        //IMPRESSAO MATRIZ BULLET
+        //IMPRESSAO MATRIZ METEOR
         /*for (i=0; i<2; i++)
         {
 
             for(j=0; j<5; j++)
             {
-                cout<<bullet[i][j]<<" ";
+                cout<<meteor[i][j]<<" ";
             }
             cout<<"\n";
         }
-        //IMPRESSAO MATRIZ BULLET
+        //IMPRESSAO MATRIZ METEOR
         */
 
         for (i=0; i<1; i++)
         {
             for(j=0; j<ran; j++)
             {
-                if (bullet[0][j]==0)
+                if (meteor[0][j]==0)
                 {
-                    bullet[0][j]=1;
-                    bullet[1][j]=ran2;
+                    meteor[0][j]=1;
+                    meteor[1][j]=ran2;
                     break;
                 }
-                if (bullet[1][j+1] == bullet[1][j])
+                if (meteor[1][j+1] == meteor[1][j])
                 {
-                    bullet[1][j+1] = bullet[1][j+1]+1;
+                    meteor[1][j+1] = meteor[1][j+1]+1;
                 }
             }
             cout<<"\n";
         }
 
-
-        //cout<<"\n"<<"Soma:"<<soma;
-
-
         for (i=0; i<1; i++)
         {
             for(j=0; j<3; j++)
             {
-                if (bullet[i][j]!=0)
-                    bullet[i][j] = bullet[i][j] + 1;
-                if (bullet[0][j]==20)
+                if (meteor[i][j]!=0)
+                    meteor[i][j] = meteor[i][j] + 1;
+                if (meteor[0][j]==20)
                 {
-                    bullet[0][j]=0;
-                    bullet[1][j]=0;
+                    meteor[0][j]=0;
+                    meteor[1][j]=0;
                     pontos = pontos -5;
                 }
 
-                if (((bx>=bullet[1][j-1]) && (bx<=bullet[1][j+1])) && (by==bullet[0][j]))
+                if (((bx>=meteor[0][j]-1) && (bx<=meteor[0][j]+1)) && (by==meteor[1][j]))
                 {
                     pontos = pontos + 3;
-                    ////mx = 2;
-                    //rd = rand()%40;
-                    //my = rd;
                     bx=0;
                     by=0;
-                    bullet[0][j]=0;
-                    bullet[1][j]=0;
+                    meteor[0][j]=0;
+                    meteor[1][j]=0;
                 }
             }
         }
+
 
 
         if(bx<=1)   //desaparece com a bala caso a mesma atinja o topo da tela
@@ -115,7 +105,7 @@ int main()
                 {
                     for(l=0; l<3; l++)
                     {
-                        tela[bullet[0][l]][bullet[1][l]] = '*';//define a posição do meteoro em todas as interações
+                        tela[meteor[0][l]][meteor[1][l]] = '*';//define a posição do meteoro em todas as interações
                     }
                 }
 
@@ -125,7 +115,6 @@ int main()
                 cout<<tela[i][j]; //impressão da matriz inteira
             }
             cout<<"\n";
-
         }
         cin>>tecla; // recebimento da letra para realizar uma ação pré programada
 
@@ -153,42 +142,9 @@ int main()
             by=py;
             bx = bx-1;
         }
-
         bx = bx-1;
         //TECLAS DE MOVIMENTO DA BALA
 
-        //CONDIÇÃO PARA REINICIALIZAÇÃO DA POSIÇÃO DA BALA E METEORO EM CASO DE COLISÃO
-        /*for (i=0; i>2; i++)
-        {
-            for(j=0; j<3;j++)
-            {
-                if (((bx>=bullet[2][j-1]) && (bx<=bullet[2][j+1])) && (by==bullet[1][j]))
-                {
-                    pontos = pontos + 3;
-                    ////mx = 2;
-                    //rd = rand()%40;
-                    //my = rd;
-                    bx=0;
-                    by=0;
-
-                }
-            }
-        }*/
-
-
-        /*if (((bx>=mx-1) && (bx<=mx+1)) && (by==my))
-        {
-            pontos = pontos + 3;
-            mx = 2;
-            rd = rand()%40;
-            my = rd;
-            bx=0;
-            by=0;
-        }*/
-        //CONDIÇÃO PARA REINICIALIZAÇÃO DA POSIÇÃO DA BALA E METEORO EM CASO DE COLISÃO
-
-    //cout<<mx<<" "<<my<<"\n";
-    //cout<<bx<<" "<<by<<"\n";
     }
     while(pontos>0);
 
