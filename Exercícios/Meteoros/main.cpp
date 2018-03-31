@@ -13,7 +13,7 @@ int main()
     char tela[22][22], tecla;   //matriz de coordenadas e tecla de movimento
     int meteor[2][3];
 
-    for (i=0; i<2; i++)
+    for (i=0; i<2; i++) // matriz de coordenadas dos meteoros / fila 0 responsavel por guardar as coordenadas y, movimento descendente. fila 1 responsavel por guardar coordenadas aleatorias x.
     {
         for(j=0; j<5; j++)
         {
@@ -25,8 +25,8 @@ int main()
         system("clear");
         cout<<"pontos = "<<pontos;
 
-        ran = rand()%(3)+1;
-        ran2 = rand()%(20)+2;
+        ran = rand()%(3)+1;//gerador aleatorio entre 3 e 1 q difine quantos meteoros seram acrescentados
+        ran2 = rand()%(20)+2;//gerador aleatorio q define a coordenada x de posição do meteoro
 
 
         //IMPRESSAO MATRIZ METEOR
@@ -46,13 +46,13 @@ int main()
         {
             for(j=0; j<ran; j++)
             {
-                if (meteor[0][j]==0)
+                if (meteor[0][j]==0)//se a matriz de meteoro estiver com 0 esta automaticamente iniciara a coordenada y com 1 e coordenada x aleatoria
                 {
                     meteor[0][j]=1;
                     meteor[1][j]=ran2;
-                    break;
+                    break; //limita o aparecimento de apenas um meteoro por execução
                 }
-                if (meteor[1][j+1] == meteor[1][j])
+                if (meteor[1][j+1] == meteor[1][j]) //caso depois meteoros sejam gerados na mesma coordenada, muda-se uma posição para direita
                 {
                     meteor[1][j+1] = meteor[1][j+1]+1;
                 }
@@ -65,15 +65,15 @@ int main()
             for(j=0; j<3; j++)
             {
                 if (meteor[i][j]!=0)
-                    meteor[i][j] = meteor[i][j] + 1;
-                if (meteor[0][j]==20)
+                    meteor[i][j] = meteor[i][j] + 1;// permiti-se o movimento descendente do meteoro caso o mesmo não esteja na coordenada 0
+                if (meteor[0][j]==20) //se o meteoro alcançar o fim da tela, ele retorna pra sua coordenada padrão 0,0, e subtrai-se 5 pontos
                 {
                     meteor[0][j]=0;
                     meteor[1][j]=0;
                     pontos = pontos -5;
                 }
 
-                if (((bx>=meteor[0][j]-1) && (bx<=meteor[0][j]+1)) && (by==meteor[1][j]))
+                if (((bx>=meteor[0][j]-1) && (bx<=meteor[0][j]+1)) && (by==meteor[1][j])) //condições para detecção de coolisão, e acrescimento de potução. Verifica-se a posição x = X da bala e meteoro, verifica-se Y-1>y e y<Y+1
                 {
                     pontos = pontos + 3;
                     bx=0;
