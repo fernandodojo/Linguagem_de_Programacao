@@ -80,6 +80,18 @@ int main()
                     bullet[1][j]=0;
                     pontos = pontos -5;
                 }
+
+                if (((bx>=bullet[1][j-1]) && (bx<=bullet[1][j+1])) && (by==bullet[0][j]))
+                {
+                    pontos = pontos + 3;
+                    ////mx = 2;
+                    //rd = rand()%40;
+                    //my = rd;
+                    bx=0;
+                    by=0;
+                    bullet[0][j]=0;
+                    bullet[1][j]=0;
+                }
             }
         }
 
@@ -89,9 +101,6 @@ int main()
             bx=0;
             by=0;
         }
-
-        bx = bx-1;
-
 
         for(i=0; i<22; i++)
         {
@@ -140,13 +149,33 @@ int main()
         if (tecla =='l')
         {
             pontos = pontos-2;
-            bx=21;
+            bx=20;
             by=py;
             bx = bx-1;
         }
+
+        bx = bx-1;
         //TECLAS DE MOVIMENTO DA BALA
 
         //CONDIÇÃO PARA REINICIALIZAÇÃO DA POSIÇÃO DA BALA E METEORO EM CASO DE COLISÃO
+        /*for (i=0; i>2; i++)
+        {
+            for(j=0; j<3;j++)
+            {
+                if (((bx>=bullet[2][j-1]) && (bx<=bullet[2][j+1])) && (by==bullet[1][j]))
+                {
+                    pontos = pontos + 3;
+                    ////mx = 2;
+                    //rd = rand()%40;
+                    //my = rd;
+                    bx=0;
+                    by=0;
+
+                }
+            }
+        }*/
+
+
         /*if (((bx>=mx-1) && (bx<=mx+1)) && (by==my))
         {
             pontos = pontos + 3;
