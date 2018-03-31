@@ -6,16 +6,16 @@ using namespace std;
 
 int main()
 {
-    int i, j, l, k,  pontos=10;
-    int px = 20, py=21;         //coordenadas x e y do player
+    int i, j, l, k,  pontos=50;
+    int px = 20, py=11;         //coordenadas x e y do player
     int rd, ran, ran2;                     //numero aleatorio
-    int mx=1, my;               //coordenacas x e y do meteoro
+    //int mx=1, my;               //coordenacas x e y do meteoro
     int bx=0, by=0;             //coordenadas x e y da bala
-    char tela[22][41], tecla;   //matriz de coordenadas e tecla de movimento
-    int bullet[2][5];
+    char tela[22][22], tecla;   //matriz de coordenadas e tecla de movimento
+    int bullet[2][3];
 
-    rd = rand()%40; //gerador de numero aleatorio entre 1 e 39
-    my = rd;        //coordenada y do meteoro recebe numero aleatorio
+    //rd = rand()%40; //gerador de numero aleatorio entre 1 e 39
+    //my = rd;        //coordenada y do meteoro recebe numero aleatorio
 
     for (i=0; i<2; i++)
     {
@@ -29,8 +29,8 @@ int main()
         system("clear");
         cout<<"pontos = "<<pontos;
 
-        ran = rand()%(5)+1;
-        ran2 = rand()%(39)+1;
+        ran = rand()%(3)+1;
+        ran2 = rand()%(20)+2;
 
 
         //IMPRESSAO MATRIZ BULLET
@@ -70,10 +70,11 @@ int main()
 
         for (i=0; i<1; i++)
         {
-            for(j=0; j<5; j++)
+            for(j=0; j<3; j++)
             {
-                bullet[i][j] = bullet[i][j] + 1;
-                if (bullet[0][j]==9)
+                if (bullet[i][j]!=0)
+                    bullet[i][j] = bullet[i][j] + 1;
+                if (bullet[0][j]==20)
                 {
                     bullet[0][j]=0;
                     bullet[1][j]=0;
@@ -83,27 +84,27 @@ int main()
         }
 
 
-        /*if(bx<=1)   //desaparece com a bala caso a mesma atinja o topo da tela
+        if(bx<=1)   //desaparece com a bala caso a mesma atinja o topo da tela
         {
             bx=0;
             by=0;
         }
 
         bx = bx-1;
-        */
+
 
         for(i=0; i<22; i++)
         {
-            for (j=0; j<41; j++)
+            for (j=0; j<22; j++)
             {
-                if (i==21 || j==0 || i==1 || j==40) //imprime bordas da tela
+                if (i==21 || j==0 || i==0 || j==21) //imprime bordas da tela
                     tela[i][j] ='#';
                 else
                     tela[i][j] =' ';//preenche qualquer coisa q não seja a borda com espaços
 
                 for (k=0; k<2; k++)
                 {
-                    for(l=0; l<5; l++)
+                    for(l=0; l<3; l++)
                     {
                         tela[bullet[0][l]][bullet[1][l]] = '*';//define a posição do meteoro em todas as interações
                     }
@@ -121,8 +122,8 @@ int main()
 
         //TELETRANPORTE AO SAIR DA TELA
         if (py<=1)
-           py=38;
-        if (py>=39)
+           py=20;
+        if (py>=21)
             py=1;
         //TELETRANPORTE AO SAIR DA TELA
 
