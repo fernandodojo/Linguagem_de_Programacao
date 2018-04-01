@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-    int i, j, l, k,  score=50, contadormeteoro=0;      //indices, contagem de score
+    int i, j, l, k,  score=50, meteorcounter=0;      //indices, contagem de score
     int ran, ran2;                  //numero aleatorio
     int playerx = 20, playery=11;   //coordenadas x e y do player
     int bulletx=21, bullety=21;       //coordenadas x e y da bala
@@ -25,7 +25,7 @@ int main()
         system("clear");
         cout<<"score = "<<score;
 
-        if (contadormeteoro <= 2) //controle pra regerar numero aleatorio
+        if (meteorcounter <= 2) //controle pra regerar numero aleatorio
             ran = rand()%(3)+1;//gerador aleatorio entre 3 e 1 q difine quantos meteoros seram acrescentados
 
 
@@ -49,9 +49,9 @@ int main()
         {
             for(j=0; j<3; j++)//usa-se a variavel ran, para limitar a geração de um novo meteoro ////melhorar////
             {
-                if (meteor[0][j]==0 && contadormeteoro<=ran)//se a matriz de meteoro estiver com 0 esta automaticamente iniciara a coordenada y comř 1 e coordenada x aleatoria
+                if (meteor[0][j]==0 && meteorcounter<=ran)//se a matriz de meteoro estiver com 0 esta automaticamente iniciara a coordenada y comř 1 e coordenada x aleatoria
                 {
-                    contadormeteoro++; //acrescenta na contagem de meteoros na tela
+                    meteorcounter++; //acrescenta na contagem de meteoros na tela
                     meteor[0][j]=1;
                     meteor[1][j]=ran2;
                     break; //limita o aparecimento de apenas um meteoro por execução
@@ -72,7 +72,7 @@ int main()
                     meteor[i][j] = meteor[i][j] + 1;// permiti-se o movimento descendente do meteoro caso o mesmo não esteja na coordenada 0
                 if (meteor[0][j]==21) //se o meteoro alcançar o fim da map, ele retorna pra sua coordenada padrão 0,0, e subtrai-se 5 score
                 {
-                    contadormeteoro--; //adiciona na contagem do numero de meteoros na tela
+                    meteorcounter--; //adiciona na contagem do numero de meteoros na tela
                     meteor[0][j]=0; //reseta o meteoro pra coordenada padrão
                     meteor[1][j]=0;
                     score = score -5;
@@ -85,12 +85,12 @@ int main()
                     bullety=21; //coordenada padrão da bala
                     meteor[0][j]=0; //coordenada padrão do meteoro
                     meteor[1][j]=0; //coordenada padrão do meteoro
-                    contadormeteoro--; //decremento na contagem de meteoros na tela
+                    meteorcounter--; //decremento na contagem de meteoros na tela
                 }
             }
         }
 
-        cout<<contadormeteoro<<"\n";
+        cout<<meteorcounter<<"\n";
         if(bulletx<=1)   //desaparece com a bala caso a mesma atinja o topo da map
         {
             bulletx=21;
