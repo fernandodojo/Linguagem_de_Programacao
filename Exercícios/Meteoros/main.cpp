@@ -47,7 +47,7 @@ int main()
 
         for (i=0; i<1; i++)
         {
-            for(j=0; j<3; j++)//usa-se a variavel ran, para limitar a geração de um novo meteoro ////melhorar////
+            for(j=0; j<3; j++)
             {
                 if (meteor[0][j]==0 && meteorcounter<=ran)//se a matriz de meteoro estiver com 0 esta automaticamente iniciara a coordenada y comř 1 e coordenada x aleatoria
                 {
@@ -72,7 +72,7 @@ int main()
                     meteor[i][j] = meteor[i][j] + 1;// permiti-se o movimento descendente do meteoro caso o mesmo não esteja na coordenada 0
                 if (meteor[0][j]==21) //se o meteoro alcançar o fim da map, ele retorna pra sua coordenada padrão 0,0, e subtrai-se 5 score
                 {
-                    meteorcounter--; //adiciona na contagem do numero de meteoros na tela
+                    meteorcounter--; //decrementa na contagem do numero de meteoros na tela
                     meteor[0][j]=0; //reseta o meteoro pra coordenada padrão
                     meteor[1][j]=0;
                     score = score -5;
