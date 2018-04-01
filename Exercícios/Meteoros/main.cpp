@@ -6,12 +6,12 @@ using namespace std;
 
 int main()
 {
-    int i, j, l, k,  score=50, meteorcounter=0;     //indices, contagem de score
+    int i, j, l, k,  score=15, meteorcounter=0;     //indices, contagem de score
     int ran, ran2;                                  //numero aleatorio
     int playerx = 20, playery=11;                   //coordenadas x e y do player
     int bulletx=21, bullety=21;                     //coordenadas x e y da bala
     char map[22][22], key;                          //matriz de coordenadas e key de movimento
-    int meteor[2][5];                               //matriz de coordenadas dos meteoros
+    int meteor[2][3];                               //matriz de coordenadas dos meteoros
     int bullet[2][20];                              //matriz de coordenadas das balas
 
     srand( time (NULL) );
@@ -19,7 +19,7 @@ int main()
     //MATRIZ DE COODENADAS DOS METEOROS
     for (i=0; i<2; i++) // matriz de coordenadas dos meteoros / fila 0 responsavel por guardar as coordenadas y, movimento descendente. fila 1 responsavel por guardar coordenadas aleatorias x.
     {
-        for(j=0; j<5; j++)
+        for(j=0; j<3; j++)
         {
             meteor[i][j] = 0;
         }
@@ -27,7 +27,6 @@ int main()
     //MATRIZ DE COODENADAS DOS METEOROS
 
     //MATRIZ DE COODENADAS DAS BALAS
-
     for (i=0; i<2;i++)
     {
         for(j=0; j<20;j++)
@@ -37,22 +36,18 @@ int main()
     }
     //MATRIZ DE COODENADAS DAS BALAS
 
-
     do{
         system("clear");
         cout<<"score = "<<score; //contagem de pontos
 
         if (meteorcounter <= 2) //controle pra gerar numero aleatorio
-            ran = rand()%(5)+1;//gerador aleatorio entre 5 e 1 q define quantos meteoros seram acrescentados
+            ran = rand()%(3)+1;//gerador aleatorio entre 3 e 1 q define quantos meteoros seram acrescentados
 
-
-        ran2 = rand()%(19)+2;//gerador aleatorio q define a coordenada x de posição do meteoro
-
-
+        ran2 = rand()%(18)+2;//gerador aleatorio q define a coordenada x de posição do meteoro
 
         for (i=0; i<1; i++)
         {
-            for(j=0; j<5; j++)
+            for(j=0; j<3; j++)
             {
                 if (meteor[0][j]==0 && meteorcounter<=ran)//se a matriz de meteoro estiver com 0 esta automaticamente iniciara a coordenada y comř 1 e coordenada x aleatoria
                 {
@@ -88,11 +83,11 @@ int main()
 
         for (i=0; i<1; i++)
         {
-            for(j=0; j<5; j++)
+            for(j=0; j<3; j++)
             {
                 if (meteor[i][j]!=0)
                     meteor[0][j] = meteor[0][j] + 1;// permiti-se o movimento descendente do meteoro caso o mesmo não esteja na coordenada 0
-                if (meteor[0][j]==21) //se o meteoro alcançar o fim da map, ele retorna pra sua coordenada padrão 0,0, e subtrai-se 5 score
+                if (meteor[0][j]==21) //se o meteoro alcançar o fim da map, ele retorna pra sua coordenada padrão 0,0, e subtrai-se 3 score
                 {
                     meteorcounter--; //decrementa na contagem do numero de meteoros na tela
                     meteor[0][j]=0; //reseta o meteoro pra coordenada padrão
@@ -131,7 +126,7 @@ int main()
 
                 for (k=0; k<2; k++)
                 {
-                    for(l=0; l<5; l++)
+                    for(l=0; l<3; l++)
                     {
                         if (meteor[k][l]!=0)
                             map[meteor[0][l]][meteor[1][l]] = '*';//define a representação de * para a coordenada definida pela matriz meteor dentro da matriz map
@@ -176,5 +171,4 @@ int main()
 
     if(score<=0)
         cout<<"Game Over";
-
 }
