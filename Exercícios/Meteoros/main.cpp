@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include <cstdlib>
+
 using namespace std;
 
 
@@ -9,7 +10,6 @@ int main()
     int i, j, l, k,  score=15, meteorcounter=0;     //indices, contagem de score
     int ran, ran2;                                  //numero aleatorio
     int playerx = 20, playery=11;                   //coordenadas x e y do player
-    int bulletx=21, bullety=21;                     //coordenadas x e y da bala
     char map[22][22], key;                          //matriz de coordenadas e key de movimento
     int meteor[2][3];                               //matriz de coordenadas dos meteoros
     int bullet[2][20];                              //matriz de coordenadas das balas
@@ -45,42 +45,7 @@ int main()
 
         ran2 = rand()%(18)+2;//gerador aleatorio q define a coordenada x de posição do meteoro
 
-        for (i=0; i<1; i++)
-        {
-            for(j=0; j<3; j++)
-            {
-                if (meteor[0][j]==0 && meteorcounter<=ran)//se a matriz de meteoro estiver com 0 esta automaticamente iniciara a coordenada y comř 1 e coordenada x aleatoria
-                {
-                    meteorcounter++; //acrescenta na contagem de meteoros na tela
-                    meteor[0][j]=1;
-                    meteor[1][j]=ran2;
-                    break; //limita o aparecimento de apenas um meteoro por execução
-                }
-            }
-            cout<<"\n";
-        }
-
-
-        for (i=0; i<1;i++)
-        {
-            for(j=0; j<20;j++)
-            {
-                if (bullet[0][j]!=21) //se a matriz de coordenadas estiver preenchida com valores diferentes de 21, essa condição permitira a mudança de coordenada
-                    bullet[0][j] = bullet[0][j]-1;
-
-                if (bullet[0][j]<=1)//se o valor de coordenada da bala for menor q 1, topo da tela, esta bala voltara a coordenada padrão
-                    bullet[i][j] = 21;
-
-                if((key=='l') && (bullet[i][j]==21))//se a matriz tiver valor padrão 21 e for pressionado tecla de disparo, a bala recebera as coordenadas do player
-                {
-                    bullet[0][j] = playerx;
-                    bullet[1][j] = playery;
-                    score = score-2;
-                    break;
-                }
-            }
-        }
-
+        //MATRIZ MATEOROS - SAO REALIZADO OPERACOES PARA ADICIONAR METEOROS NA TELA, AO ADICIONAR COORDENADAS NA MATRIZ
         for (i=0; i<1; i++)
         {
             for(j=0; j<3; j++)
@@ -94,8 +59,45 @@ int main()
                     meteor[1][j]=0;
                     score = score -5;
                 }
+                if (meteor[0][j]==0 && meteorcounter<=ran)//se a matriz de meteoro estiver com 0 esta automaticamente iniciara a coordenada y comř 1 e coordenada x aleatoria
+                {
+                    meteorcounter++; //acrescenta na contagem de meteoros na tela
+                    meteor[0][j]=1;
+                    meteor[1][j]=ran2;
+                    break; //limita o aparecimento de apenas um meteoro por execução
+                }
+            }
+            cout<<"\n";
+        }
+        //MATRIZ MATEOROS - SAO REALIZADO OPERACOES PARA ADICIONAR METEOROS NA TELA, AO ADICIONAR COORDENADAS NA MATRIZ
 
 
+        //MATRIZ BALAS - SAO REALIZADO OPERACOES PARA ADICIONAR BALAS NA TELA, AO ADICIONAR COORDENADAS NA MATRIZ
+        for (i=0; i<1;i++)
+        {
+            for(j=0; j<20;j++)
+            {
+                if (bullet[0][j]!=21) //se a matriz de coordenadas estiver preenchida com valores diferentes de 21, essa condição permitira a mudança de posição(coordenada)
+                    bullet[0][j] = bullet[0][j]-1;
+                if (bullet[0][j]<=1)//se o valor de coordenada da bala for menor q 1, topo da tela, esta bala voltara a coordenada padrão
+                    bullet[i][j] = 21;
+                if((key=='l') && (bullet[i][j]==21))//se a matriz tiver valor padrão 21 e for pressionado tecla de disparo, a bala recebera as coordenadas do player
+                {
+                    bullet[0][j] = playerx;
+                    bullet[1][j] = playery;
+                    score = score-2;
+                    break;
+                }
+            }
+        }
+        //MATRIZ BALAS - SAO REALIZADO OPERACOES PARA ADICIONAR BALAS NA TELA, AO ADICIONAR COORDENADAS NA MATRIZ
+
+
+        //MATRIZ PARA VERIFICAÇÃO DE COLISÃO
+        for (i=0; i<1; i++)
+        {
+            for(j=0; j<3; j++)
+            {
                 for (k=0; k<1;k++)
                 {
                     for(l=0; l<20;l++)
@@ -103,18 +105,20 @@ int main()
                         if ((bullet[0][l]>=meteor[0][j]-1) && (bullet[0][l]<=meteor[0][j]+1) && (bullet[1][l]==meteor[1][j])) //condições para detecção de coolisão, e acrescimento de potução. Verifica-se a posição x = X da bala e meteoro, verifica-se Y-1>y e y<Y+1
                         {
                             score = score + 3;
-                            bulletx=21; //coordenada padrão da bala
-                            bullety=21; //coordenada padrão da bala
-                            meteor[0][j]=0; //coordenada padrão do meteoro
-                            meteor[1][j]=0; //coordenada padrão do meteoro
+                            meteor[0][j]=0; //coordenada padrão do meteoro, faz o meteoro surmir apos colisao
+                            meteor[1][j]=0; //coordenada padrão do meteoro, faz o meteoro surmir apos colisao
+                            //bullet[0][l] = 21; //coordenada padrão da bala, faz a bala surmir apos colisao
+                            //bullet[1][l] = 21; //coordenada padrão da bala, faz a bala surmir apos colisao
                             meteorcounter--; //decremento na contagem de meteoros na tela
                         }
                     }
                 }
             }
         }
+        //MATRIZ PARA VERIFICAÇÃO DE COLISÃO
 
 
+        //MATRIZ PARA DESENHO E IMPRESSÃO NA TELA
         for(i=0; i<22; i++)
         {
             for (j=0; j<22; j++)
@@ -138,9 +142,7 @@ int main()
                     for(l=0; l<20;l++)
                     {
                         if(bullet[0][l]!=21)
-                        {
                             map[bullet[0][l]][bullet[1][l]] = '|';//define a posição da bala em todas as interações
-                        }
                     }
                 }
                 map[playerx][playery]= '_';// define a posição do player em todas as interações
@@ -148,6 +150,8 @@ int main()
             }
             cout<<"\n";
         }
+        //MATRIZ PARA DESENHO E IMPRESSÃO NA TELA
+
 
         cin>>key; // recebimento da letra para realizar uma ação pré programada
 
@@ -156,6 +160,7 @@ int main()
            playery=19;
         if (playery>=20)
             playery=1;
+
         //TELETRANPORTE AO SAIR DA map
 
         //keyS DE MOVIMENTO DO PLAYER
