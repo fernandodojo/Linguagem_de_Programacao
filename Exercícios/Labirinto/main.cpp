@@ -8,18 +8,12 @@ int main()
 {
     srand(time(NULL));
     int **labirinto;
-    int i, j;
-    int m, n;
-    char tecla;
-    int playerx, playery;
-    int fimx, fimy;
-    int count = 0;
-
+    int i, j, m, n, playerx, playery, fimx, fimy, count = 0;    
+    char tecla;     
     cout<<"Digite o numero de linhas e o numero de colunas: ";
-    cin>>m;
-    cin>>n;
-
+    cin>>m>>n;    
     labirinto = new int *[m];
+    
     for (i=0; i<m; i++)
         labirinto[i]= new int [n];
 
@@ -36,7 +30,6 @@ int main()
         }
         cout<<"\n";
     }
-
     system("clear");
     //inserindo paredes aleatorias
     for(i=0; i<(m*n)/10; i++)//the number of obstacle is the number of colluns multiplied by the number of line divided by four. Each means that 1/4 of all index is used.
@@ -70,10 +63,7 @@ int main()
             }
             cout<<"\n";
         }
-
         cin>>tecla;
-
-
         if (tecla=='d') //direita
         {
             if (labirinto[playery][playerx+1]==0 || labirinto[playery][playerx+1]==3)
@@ -109,9 +99,7 @@ int main()
                 labirinto[playery][playerx]=0;
                 playery++;
             }
-        }
-
-
+        }        
     }while(tecla!='p' && (playerx != fimx || playery != fimy)); // caso a tecla p seja pressionada ou o player alcançar a posicao exata do fim o jogo acaba
     cout<<"Fim do Jogo";
 }
