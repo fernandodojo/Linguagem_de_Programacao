@@ -34,18 +34,17 @@ int main()
     int produto, maior =0, i , j;
     int sequencia[5];
 
-    for(i=0; i<996; i++)
+    for(i=0; i<996; i++)                        //evita-se ir até o final para evitar segmentation fault
     {
-        produto = (str1[i]-48);
-        for(j=i+1; j<i+5; j++)
+        produto = (str1[i]-48);                 //o produto inicial pelo primeiro numero da sequencia
+        for(j=i+1; j<i+5; j++)                  //o loop começa a multiplicar os valoresa a partir do valor inicial do produto com o numero seguinte da quencia de 5
         {
-            //cout<<produto<<" "<<str1[j]-48<<"\n";
-            produto = produto * (str1[j]-48);
+            produto = produto * (str1[j]-48);   //diz-se que o numero q deve ser multiplicado é seu equivalente na tablea ascii, por isso a subtraçao por -48
         }
-        if (produto>maior)
+        if (produto>maior)                      // caso o valor resultante da multiplicação seja maior q o valor da variavel maior, guarda-se este valor
         {
             maior = produto;
-            sequencia[0] = str1[i]-48;
+            sequencia[0] = str1[i]-48;          // como existe uma condição para guardar o valor maior, acaba-se guardando a primeira ocorrencia do i, sabendo a posição do primeiro, soma-se valores a estas posições para determinar as proximas 4
             sequencia[1] = str1[i+1]-48;
             sequencia[2] = str1[i+2]-48;
             sequencia[3] = str1[i+3]-48;
@@ -53,11 +52,14 @@ int main()
         }
     }
 
+    //IMPRESSAO
     cout<<"Maior: "<<maior<<"\n\n";
     cout<<"Sequencia: ";
     for(i=0; i<5; i++)
         cout<<sequencia[i]<<" ";
 
     cout<<"\n";
+    //IMPRESSAO
+    
     return 0;
 }

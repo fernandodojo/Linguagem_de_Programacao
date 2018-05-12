@@ -17,16 +17,13 @@ int main()
 	cin.getline(frase,100);
 	cin.getline(busca,100);
 
-	acho = strstr(frase, busca);
-	cout<<acho<<"\n";
-	//if (acho!=NULL)
-    //  cont++;
+	acho = strstr(frase, busca); // inicia-se a busca antes do loop o que permite a continuação do loop por acho já possuir valor
+	cout<<acho<<"\n";	
 
 	while (acho!= NULL)
 	{
-        acho = strstr(acho + strlen(busca), busca);
-		//cout<<acho<<"\n";
-		cont++;
+        acho = strstr(acho + strlen(busca), busca); //pega-se ponteiro q guarda o inicio da nova string e soma essa a posição ao tamanho do que se buscava, para recomeçar a pesquisa. EX.: string: fernando ; busca: na ;  nova string acho: nando; novastring para nova busca: ndo .
+		cont++;										//contador
 	}
 	cout<<cont<<"\n";
 	return 0;
