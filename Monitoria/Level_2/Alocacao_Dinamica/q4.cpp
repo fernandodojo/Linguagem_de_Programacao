@@ -19,7 +19,7 @@ int main()
     if (n>=0)
     {
       vetor[i]=n;
-      cont++;
+      cont++;                  //conta-se a quantidade de valores validos para a insercao dos mesmos em outro vetor dinamico para posterior impressao
     }
     else
       break;
@@ -29,16 +29,16 @@ int main()
 
   for(i=0; i<cont;i++)
   {
-    if (vetor[i]>=0)
+    if (vetor[i]>=0)           //adiciona os valores positivos ao vetor dinamico/ 
       leitura[i]=vetor[i];
-    else
+    else                      // caso um valor negativo seja adicionado, o loop é encerrado, passa-se para o proximo numero
       break;
   }
 
   cout<<"Vetor de numeros positivos\n";
   for(i=0; i<cont;i++)
   {
-    cout<<leitura[i]<<" ";
+    cout<<leitura[i]<<" ";    //impressao dos numeros
   }
   cout<<"\n";
 

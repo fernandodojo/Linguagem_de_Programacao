@@ -24,14 +24,19 @@ int main()
 			cont++;
 		}
 	}
-	cout<<"\nRealmente existem "<<cont<<" posicoes iguais a 0\n";
 
+	if (cont == 100)
+		cout<<"\nRealmente existem 100 posicoes iguais a 0\n";  //informa que existem 100 posições ocupadas por 0
+	else
+		cout<<"\nExistem "<<cont<<" posicoes iguais a 0\n";		//caso não exista é exibido a quantidade que de fato existe
+ 
 	for(i=0;i<100;i++)
 	{
-		vetor[i]=i;
+		vetor[i]=i;												//atribui-se o valor do indice na devida posicao
 	}
 	
-	cout<<"\n\n10 PRIMEIROS VALORES\n";
+	//IMPRESSAO
+	cout<<"\n\n10 PRIMEIROS VALORES\n";							
 	for(i=0;i<10;i++)
 	{
 		cout<<"0"<<vetor[i]<<" ";
@@ -43,4 +48,5 @@ int main()
 		cout<<vetor[i]<<" ";
 	}
 	cout<<"\n\n";
+	//IMPRESSAO
 }
