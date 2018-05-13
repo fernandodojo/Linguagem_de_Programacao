@@ -52,5 +52,9 @@ int main()
 	else
         cout<<"Data inválida, encerrando...\n";
 
+    delete []data;
+    delete []achado;
+    delete []vetor;
+
     return 0;
 }

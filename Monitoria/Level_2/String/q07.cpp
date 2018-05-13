@@ -18,7 +18,6 @@ int main()
 	cin.getline(busca,100);
 
 	acho = strstr(frase, busca); // inicia-se a busca antes do loop o que permite a continuação do loop por acho já possuir valor
-	cout<<acho<<"\n";	
 
 	while (acho!= NULL)
 	{
@@ -26,5 +25,7 @@ int main()
 		cont++;										//contador
 	}
 	cout<<cont<<"\n";
+	delete []frase;
+	delete []busca;
 	return 0;
 }
